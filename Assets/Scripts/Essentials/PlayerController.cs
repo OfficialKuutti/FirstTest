@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
 
     [Header ("Shooting")]
     public GameObject bullet;
-    public Transform gun;
+    public Transform gun1;
+    public Transform gun2;
     public float fireRate = 0.5f;
     public bool canFire = true;
 
@@ -26,13 +27,17 @@ public class PlayerController : MonoBehaviour
     {
         if (controller)
         {
-            gun.GetComponent<TwinStickAim>().enabled = true;
-            gun.GetComponent<GunScript>().enabled = false;
+            gun1.GetComponent<TwinStickAim>().enabled = true;
+            gun1.GetComponent<GunScript>().enabled = false;
+            gun2.GetComponent<TwinStickAim>().enabled = true;
+            gun2.GetComponent<GunScript>().enabled = false;
         }
         else
         {
-            gun.GetComponent<TwinStickAim>().enabled = false;
-            gun.GetComponent<GunScript>().enabled = true;
+            gun1.GetComponent<TwinStickAim>().enabled = false;
+            gun1.GetComponent<GunScript>().enabled = true;
+            gun2.GetComponent<TwinStickAim>().enabled = false;
+            gun2.GetComponent<GunScript>().enabled = true;
         }
     
     
@@ -46,7 +51,7 @@ public class PlayerController : MonoBehaviour
         
         hor = Input.GetAxis("Horizontal");
         ver = Input.GetAxis("Vertical");
-        transform.Translate(new Vector3(hor*playerSpeed*Time.deltaTime,ver*playerSpeed*Time.deltaTime,0));
+        transform.Translate(new Vector3(hor*playerSpeed*Time.deltaTime,0*Time.deltaTime,0));
 
         //This is for shooting
 
@@ -58,7 +63,8 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator Shoot()
     {
-        Instantiate(bullet, gun.position, gun.rotation);
+        Instantiate(bullet, gun1.position, gun1.rotation);
+        Instantiate(bullet, gun2.position, gun2.rotation);
         canFire = false;
         yield return new WaitForSeconds(fireRate);
         canFire = true;
