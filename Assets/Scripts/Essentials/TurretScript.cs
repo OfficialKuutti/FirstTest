@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class TurretScript : MonoBehaviour
 {
     public Transform target;
-    public GameObject enemyBullet;
+    public GameObject enemyGunBullet;
    
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class TurretScript : MonoBehaviour
 
     public void Shoot()
     {
-        Instantiate(enemyBullet, transform.position, transform.rotation);
+        Instantiate(enemyGunBullet, transform.position, transform.rotation);
     
     }
 
