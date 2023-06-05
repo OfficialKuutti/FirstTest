@@ -53,6 +53,20 @@ public class PlayerController : MonoBehaviour
         ver = Input.GetAxis("Vertical");
         transform.Translate(new Vector3(hor*playerSpeed*Time.deltaTime,0*Time.deltaTime,0));
 
+
+        if (transform.position.x <= -19)
+        {
+            transform.position = new Vector3(-19, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x >= 16)
+        {
+            transform.position = new Vector3(16, transform.position.y, transform.position.z);
+        }
+
+
+
+
+
         //This is for shooting
 
         if (!controller && Input.GetButton("Fire1") &&canFire)

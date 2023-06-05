@@ -11,11 +11,8 @@ public class MissileSpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Instantiate(missile, transform.position, transform.rotation);
-        //Instantiate is to spawn or create something from unity example frefabs
-
-
-        // Use this to make object spawning repeating also line29 is inactive now
+        
+        // Using this to make object spawning repeatedly 
         Invoke("Spawn",3);
 
         

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public float bulletSpeed = 15f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +20,16 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        var enemy = other.gameObject.GetComponent<EnemyHP>();
+
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            print("enemyyn osui");
+            enemy.takehit(1);
             Destroy(gameObject);
         }
+
+       
     }
 
 }

@@ -7,7 +7,8 @@ public class TurretScript : MonoBehaviour
 {
     public Transform target;
     public GameObject enemyGunBullet;
-   
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,9 @@ public class TurretScript : MonoBehaviour
     public void Shoot()
     {
         Instantiate(enemyGunBullet, transform.position, transform.rotation);
-    
+
     }
+
 
 
 }
