@@ -6,14 +6,19 @@ public class EnemyHP : MonoBehaviour
 {
 
     public float Hitpoints;
-    public float MaxHitpoints = 5;
+    public float MaxHitpoints = 2f;
     public HealthBarBehavior HealthBar;
+
+    
+    public void IncreaseHP(float multiplier)
+    {
+        MaxHitpoints *= multiplier;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        Hitpoints = MaxHitpoints;
-        
+        Hitpoints = MaxHitpoints;        
     }
 
     void Update()

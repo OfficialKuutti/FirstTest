@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int score = 0;
+   
 
     public static GameManager gameManager;
     
@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
             gameManager = this;
+            
         }
         
         else if(gameManager !=this) 

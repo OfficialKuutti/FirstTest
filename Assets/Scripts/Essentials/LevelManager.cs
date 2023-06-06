@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelNumber);
+        
     }
 
     public void QuitGame()

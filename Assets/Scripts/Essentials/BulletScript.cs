@@ -5,10 +5,13 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public float bulletSpeed = 15f;
+
+    public ScoreManager scoreManager;
     
     // Start is called before the first frame update
     void Start()
     {
+        scoreManager = GameObject.FindObjectOfType<ScoreManager>();
         Destroy(gameObject,5f);   
     }
 
@@ -24,9 +27,12 @@ public class BulletScript : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            print("enemyyn osui");
             enemy.takehit(1);
             Destroy(gameObject);
+            if (scoreManager != null)
+            {
+                scoreManager.BulletHitEnemy();
+            }
         }
 
        
