@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
@@ -10,7 +11,16 @@ using UnityEngine;
         public GameObject enemyObject1;
         public GameObject enemyObject2;
 
-    
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        enemyObject1.GetComponent<EnemyHP>().MaxHitpoints = 2f;
+    }
+
 
     public void IncreaseScore(int amount)
         {
@@ -22,7 +32,7 @@ using UnityEngine;
                 
             for (int i = 0; i < increaseCount; i++)
                 {
-                    enemyHPScript.IncreaseHP(1.25f);
+                    enemyHPScript.IncreaseHP(1.15f);
                 }
             }
             

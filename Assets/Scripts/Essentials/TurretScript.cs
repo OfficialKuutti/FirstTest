@@ -20,6 +20,7 @@ public class TurretScript : MonoBehaviour
     void Update()
     {
         transform.LookAt(target);
+        
     }
 
     public void Shoot()
@@ -28,6 +29,6 @@ public class TurretScript : MonoBehaviour
 
     }
 
-
+   
 
 }

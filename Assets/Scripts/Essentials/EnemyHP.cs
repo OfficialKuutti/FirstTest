@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyHP : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class EnemyHP : MonoBehaviour
     public float Hitpoints;
     public float MaxHitpoints = 2f;
     public HealthBarBehavior HealthBar;
+    public TurretRespawner turretRespawner;
 
-    
     public void IncreaseHP(float multiplier)
     {
         MaxHitpoints *= multiplier;
@@ -18,6 +19,8 @@ public class EnemyHP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         Hitpoints = MaxHitpoints;        
     }
 
@@ -32,6 +35,13 @@ public class EnemyHP : MonoBehaviour
         if (Hitpoints <= 0)
         {
             Destroy(gameObject);
+            turretRespawner.TurretDestroyed(gameObject);
         }
     }
+
+    public void Initialize(TurretRespawner respawner)
+    {
+        turretRespawner = respawner;
+    }
 }
+
