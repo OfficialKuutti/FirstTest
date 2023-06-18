@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class HomingEnemyScript : MonoBehaviour
 {
 
     public Transform target;
     public float enemySpeed = 2f;
+    public GameObject deathEffect;
+    private AudioSource playerDeadSound;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        playerDeadSound = GetComponent<AudioSource>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -25,12 +30,14 @@ public class HomingEnemyScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
-
+            GameObject effectGO = Instantiate(deathEffect, transform.position, Quaternion.identity) as GameObject;
+            playerDeadSound.Play();
+            Destroy(effectGO, 1f);
+            Destroy(other.gameObject, 0.01f);
         }
+
+
+
+
     }
-
-
-
-
 }

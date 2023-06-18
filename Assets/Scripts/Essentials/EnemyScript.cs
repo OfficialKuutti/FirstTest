@@ -8,6 +8,7 @@ public class EnemyScript : MonoBehaviour
 
 {
     public float enemySpeed = 5f;
+    public GameObject deathEffect;
     
 
     // Start is called before the first frame update
@@ -26,10 +27,9 @@ public class EnemyScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
-            
-            
-            
+            GameObject effectGO = Instantiate(deathEffect, transform.position, Quaternion.identity) as GameObject;
+            Destroy(effectGO, 1f);
+            Destroy(other.gameObject, 0.01f);
             
         }
     }

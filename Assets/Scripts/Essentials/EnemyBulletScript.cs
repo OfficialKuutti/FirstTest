@@ -5,10 +5,13 @@ using UnityEngine;
 public class EnemyBulletScript : MonoBehaviour
 {
     public float speed = 5;
-    
+    public GameObject deathEffect;
+    private AudioSource playerDeadSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerDeadSound = GetComponent<AudioSource>();
         Destroy(gameObject, 8f);
     }
 
@@ -21,8 +24,11 @@ public class EnemyBulletScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-        { 
-            Destroy(other.gameObject);
+        {
+            GameObject effectGO = Instantiate(deathEffect, transform.position, Quaternion.identity) as GameObject;
+            playerDeadSound.Play();
+            Destroy(effectGO, 1f);
+            Destroy(other.gameObject, 0.01f);
         }
     }
 

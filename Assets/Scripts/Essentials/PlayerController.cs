@@ -21,10 +21,13 @@ public class PlayerController : MonoBehaviour
     public Transform gun2;
     public float fireRate = 0.5f;
     public bool canFire = true;
+    private AudioSource playerShootSound;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerShootSound = GetComponent<AudioSource>();
+
         if (controller)
         {
             gun1.GetComponent<TwinStickAim>().enabled = true;
@@ -72,6 +75,7 @@ public class PlayerController : MonoBehaviour
         if (!controller && Input.GetButton("Fire1") &&canFire)
         {
             StartCoroutine("Shoot");
+            playerShootSound.Play();
         }
     }
 

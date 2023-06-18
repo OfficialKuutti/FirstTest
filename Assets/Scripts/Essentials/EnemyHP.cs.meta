@@ -3,7 +3,10 @@ guid: 0e28ef5f699aa974691c1289ef5e1c23
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - HealthBar: {instanceID: 0}
+  - turretRespawner: {instanceID: 0}
+  - deathEffect: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

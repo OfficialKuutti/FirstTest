@@ -1,25 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class ScoreDisplay : MonoBehaviour
 {
+    public static ScoreDisplay Instance; // Singleton instance
+
     public ScoreManager scoreManager;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highScoreText;
+
+    public GameObject scoreTextObject;
+    public GameObject highScoreTextObject;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     private void Start()
     {
-        scoreText = GetComponent<TextMeshProUGUI>();
+        scoreText = scoreTextObject.GetComponent<TextMeshProUGUI>();
+        highScoreText = highScoreTextObject.GetComponent<TextMeshProUGUI>();
 
+        scoreManager = FindObjectOfType<ScoreManager>();
+
+        UpdateScoreText();
     }
 
-    private void Update()
+    public void UpdateScoreText()
     {
-        if (scoreManager != null)
+        if (scoreText != null && highScoreText != null)
         {
-            scoreText.text = "Score: " + scoreManager.score.ToString();
+            scoreText.text = "Score: " + scoreManager.GetScore().ToString();
+            highScoreText.text = "High Score: " + scoreManager.GetHighScore().ToString();
         }
     }
 }

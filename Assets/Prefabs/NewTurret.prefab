@@ -439,6 +439,7 @@ MonoBehaviour:
   MaxHitpoints: 2
   HealthBar: {fileID: 7626209786559043199}
   turretRespawner: {fileID: 0}
+  deathEffect: {fileID: 6309935073349260838, guid: c363dfe4104408c4e8aa3b6990e89aba, type: 3}
 --- !u!1 &6859791903183730559
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class TurretRespawner : MonoBehaviour
 {
     public GameObject turretPrefab;  // The prefab of the turret
     public Transform[] turretSpawnPoints;  // The spawn points for the turrets
-    public float respawnDelay = 3f;  // Delay before respawning turrets in seconds
+    public float respawnDelay = 5f;  // Delay before respawning turrets in seconds
 
     private GameObject[] turrets;  // Array to hold references to the spawned turrets
     private int destroyedTurretCount;  // Counter for destroyed turrets

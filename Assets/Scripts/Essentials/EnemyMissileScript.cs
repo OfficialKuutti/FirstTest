@@ -5,10 +5,13 @@ using UnityEngine;
 public class EnemyMissileScript : MonoBehaviour
 {
     public float speed = 5;
+    public GameObject deathEffect;
+    private AudioSource playerDeath;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerDeath = GetComponent<AudioSource>();
         Destroy(gameObject, 10f);
     }
 
@@ -23,7 +26,12 @@ public class EnemyMissileScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            GameObject effectGO = Instantiate(deathEffect, transform.position, Quaternion.identity) as GameObject;
+            playerDeath.Play();
+            Destroy(effectGO, 1f);
+            Destroy(other.gameObject, 0.01f);
+            
+            
         }
     }
 
